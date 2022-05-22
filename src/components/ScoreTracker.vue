@@ -68,12 +68,13 @@
 
         // Update player's score and reset scoreValueIndex
         updateScore(increase = true) {
-            this.scoreValueIndex = -1;
-
             if(increase)
                 this.score += this.scoreValue;
             else
                 this.score -= this.scoreValue;
+                
+            this.scoreValueIndex = -1;
+            this.scoreValue = 0;
         }
 
         // Sets score value when the user selects on of the score options
