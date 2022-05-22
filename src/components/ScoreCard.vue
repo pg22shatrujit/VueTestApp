@@ -6,8 +6,11 @@
 <template>
 
     <section>
-        <div class="score">{{ score }}</div>
-        <slot class="name"></slot>
+        <div class="score" :class="{'red-text': isNegative}">{{ formatScore(score) }}</div>
+        <br/>
+        <span class="name">
+            <slot></slot>
+        </span>
     </section>
 
 </template>
@@ -23,6 +26,19 @@
             this.props = {
                 score: Number
             }
+            this.vm = {
+                isNegative: false
+            }
+        }
+        formatScore(score) {
+            this.isNegative = false;
+            if(score < 0) {
+                this.isNegative = true;
+                score *= -1;
+            }
+
+            // Regex adds a comma after every three digits, reading right-to-left (Doesn't work with floating point values)
+            return ( this.isNegative ? "-" : "" ) + "$" + score.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
     }
 
@@ -30,4 +46,19 @@
 
 </script>
 <style scoped>
+.score {
+    display: inline-block;
+    width: 10vw;
+    padding: 1vh;
+    color: white;
+    font-size: 2em;
+    border: 2px solid black;
+}
+.red-text {
+    color: red;
+}
+.name {
+    color: white;
+    font-size: 1.5em;
+}
 </style>

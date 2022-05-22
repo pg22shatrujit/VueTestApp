@@ -6,8 +6,8 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
     <section class="test-container">
         <div class="test">
-            <h1 class="title">Testing score card</h1>
-            <div>
+            <div class="card-container">
+                <h1 class="title">Testing score card</h1>
                 <j-player-details />
             </div>
         </div>
@@ -31,23 +31,33 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     export default new TestController('pgTest', {jPlayerDetails});
 
 </script>
-<style>
+<style scoped>
 /* Local styles for this template */
     .test-container {
         display: inline-block;
         width: 100%;
+        background: black;
     }
 
     .test {
         margin:2vw;
         border: 1px solid black;
-        background-color: lightgray;
+        background-color: #060CE9;
         color: black;
         height: 78vh;
         width: 80vw;
+        display: flex;
+        text-align: center;
+        align-items: center;
+    }
+
+    .card-container {
+        display: inline-block;
+        flex-grow: 1;
     }
 
     .title {
-        text-shadow: 2px 2px #777;
+        text-shadow: 2px 2px #9C8E57;
+        color: #FFCC00;
     }
 </style>
