@@ -41,9 +41,9 @@
             super( name, subComponentList )
 
             this.props = {
-                round: Number,
-                questions: Number,
-                scoreIncrement: Number
+                round: Number, // Which round of the game, used a multiplier for score
+                questions: Number, // How many questions in each category, determines the number of scoring options to choose from
+                scoreIncrement: Number // Determines increment between score options, along with round
             }
             
             this.vm = {
@@ -72,7 +72,7 @@
                 this.score += this.scoreValue;
             else
                 this.score -= this.scoreValue;
-                
+
             this.scoreValueIndex = -1;
             this.scoreValue = 0;
         }

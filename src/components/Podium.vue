@@ -23,7 +23,7 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.props = {
-                score: Number
+                score: Number // Player score passed in from score tracker
             }
         }
         formatScore(score) {
