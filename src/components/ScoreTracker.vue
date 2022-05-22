@@ -23,8 +23,8 @@
             <br/>
 
             <!-- Buttons to verify score addition/subtraction -->
-            <button @click="updateScore()"> Got it Right </button>
-            <button @click="updateScore(false)"> Got it Wrong </button>
+            <button @click="updateScore()"> Got it right </button>
+            <button @click="updateScore(false)"> Got it wrong </button>
         </div>
         <!-- Podium displays name and current score -->
         <j-podium v-if="ready" :score="score">{{ name }}</j-podium>
