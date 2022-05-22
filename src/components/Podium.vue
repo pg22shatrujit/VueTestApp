@@ -1,16 +1,16 @@
-<!--
-<j-score-card name="Player Name" score="100" />
+<!-- Copyright (c) 2022 Shatrujit Kumar, All Rights Reserved -->
 
-@copyright (c) 2019. Scott Henshaw. All Rights Reserved.
+<!--
+<j-podium score="100"> Player Name </j-podium>
 -->
 <template>
 
     <section>
         <div class="score" :class="{'red-text': isNegative}">{{ formatScore(score) }}</div>
-        <br/>
+        <!-- <br/>
         <span class="name">
             <slot></slot>
-        </span>
+        </span> -->
     </section>
 
 </template>
@@ -19,7 +19,7 @@
 
     // import other components you use here...
 
-    class ScoreCardController extends Controller {
+    class PodiumController extends Controller {
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
@@ -32,17 +32,15 @@
         }
         formatScore(score) {
             this.isNegative = false;
-            if(score < 0) {
+            if(score < 0) 
                 this.isNegative = true;
-                score *= -1;
-            }
 
             // Regex adds a comma after every three digits, reading right-to-left (Doesn't work with floating point values)
-            return ( this.isNegative ? "-" : "" ) + "$" + score.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return ( this.isNegative ? "-" : "" ) + "$" + Math.abs(score).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
     }
 
-    export default new ScoreCardController('jScoreCard');
+    export default new PodiumController('jPodium');
 
 </script>
 <style scoped>

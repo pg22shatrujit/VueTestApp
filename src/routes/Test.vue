@@ -1,14 +1,13 @@
-<!--
-VFS VUE Single File Component
-Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
--->
+<!-- Copyright (c) 2022 Shatrujit Kumar, All Rights Reserved -->
 <template>
 
     <section class="test-container">
         <div class="test">
             <div class="card-container">
-                <h1 class="title">Testing score card</h1>
-                <j-player-details />
+                <h1 class="title">Testing score tracking and Podium</h1>
+                <!-- Score tracker generates question scores based on the round,
+                number of questions, and increment between questions -->
+                <j-score-tracker :round="1" :questions="5" :scoreIncrement="200"/>
             </div>
         </div>
     </section>
@@ -16,19 +15,16 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 </template>
 <script>
     import Controller from '@/mixins/controller'
-    import jPlayerDetails from '@/components/PlayerDetails.vue'
+    import jScoreTracker from '@/components/ScoreTracker.vue'
 
     class TestController extends Controller {
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
-            this.vm = {
-                name: 'VFS Vue Template',
-            }
         }
     }
 
-    export default new TestController('pgTest', {jPlayerDetails});
+    export default new TestController('pgTest', { jScoreTracker });
 
 </script>
 <style scoped>
@@ -39,6 +35,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         background: black;
     }
 
+    /* Tried to keep colors consistent with Jeopardy */
     .test {
         margin:2vw;
         border: 1px solid black;
